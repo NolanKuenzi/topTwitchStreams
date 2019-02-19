@@ -62,29 +62,29 @@ const TwtichData = () => {
         apiData.length < 1
           ? null
           : apiData.map(item => (
-              <li
+            <li
               key={item.user_name}
               className="streamLi"
               onClick={() => window.open(`https://www.twitch.tv/${item.user_name}`)}
             >
               <div className="internalDiv">
-                  {`${item.number}.`} {item.user_name} - Viewer Count:{' '}
-                  {formatNumber(item.viewer_count)}
-                  <br /> <br />
-                  Currently Streaming: {item.gameName}
-                  <br />
-                  <img
-                    src={item.imgUrl.replace('{width}x{height}', '125x125')}
-                    alt="Box Art is Unavailable"
-                  />
-                  <br /> <br />
-                  Screen Shot:
-                  <br />
-                  <img
-                    src={item.thumbnail_url.replace('{width}x{height}', '350x300')}
-                    alt="Screen Shot is Unavailable"
-                  />
-                </div>
+                {`${item.number}.`} {item.user_name} - Viewer Count:{' '}
+                {formatNumber(item.viewer_count)}
+                <br /> <br />
+                Currently Streaming: {item.gameName}
+                <br />
+                <img
+                  src={item.imgUrl.replace('{width}x{height}', '125x125')}
+                  alt="Box Art is Unavailable"
+                />
+                <br /> <br />
+                Screen Shot:
+                <br />
+                <img
+                  src={item.thumbnail_url.replace('{width}x{height}', '350x300')}
+                  alt="Screen Shot is Unavailable"
+                />
+              </div>
             </li>
           )),
       );
