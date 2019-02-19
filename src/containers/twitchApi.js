@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import regeneratorRuntime, { async } from 'regenerator-runtime';
-import clientId from '../clientId'; /* Importing from a git-ignored file to keep private */
 
 const TwtichData = () => {
   const [apiData, setApiData] = useState('');
@@ -9,6 +8,7 @@ const TwtichData = () => {
   const [streamList, setStreamList] = useState(null);
   async function Api() {
     try {
+      const clientId = '97oe7iqpqsvdcnvc7hm6oa7sisdu8f';
       /* Get the top streams */
       const getStreams = 'https://api.twitch.tv/helix/streams?first=50';
       const request = await fetch(getStreams, {
