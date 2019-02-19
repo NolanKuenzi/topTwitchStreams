@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import regeneratorRuntime, { async } from 'regenerator-runtime';
+import regeneratorRuntime from 'regenerator-runtime';
+import ClientId from '../clientId';
 
 const TwtichData = () => {
   const [apiData, setApiData] = useState('');
@@ -8,19 +9,18 @@ const TwtichData = () => {
   const [streamList, setStreamList] = useState(null);
   async function Api() {
     try {
-      const clientId = '97oe7iqpqsvdcnvc7hm6oa7sisdu8f';
       /* Get the top streams */
       const getStreams = 'https://api.twitch.tv/helix/streams?first=50';
       const request = await fetch(getStreams, {
         method: 'GET',
-        headers: { 'Client-ID': clientId },
+        headers: { 'Client-ID': ClientId },
       });
       const streamData = await request.json();
       const getGames = 'https://api.twitch.tv/helix/games/top?first=100';
       /* Get game names and box art urls */
       const request2 = await fetch(getGames, {
         method: 'GET',
-        headers: { 'Client-ID': clientId },
+        headers: { 'Client-ID': ClientId },
       });
       const gameData = await request2.json();
       /* Add numbers, game names, and box art urls to the streamData.data array */
@@ -63,11 +63,11 @@ const TwtichData = () => {
           ? null
           : apiData.map(item => (
               <li
-                key={item.user_name}
-                className="streamLi"
-                onClick={() => window.open(`https://www.twitch.tv/${item.user_name}`)}
+              key={item.user_name}
+              className="streamLi"
+              onClick={() => window.open(`https://www.twitch.tv/${item.user_name}`)}
             >
-                <div className="internalDiv">
+              <div className="internalDiv">
                   {`${item.number}.`} {item.user_name} - Viewer Count:{' '}
                   {formatNumber(item.viewer_count)}
                   <br /> <br />
@@ -85,7 +85,7 @@ const TwtichData = () => {
                     alt="Screen Shot is Unavailable"
                   />
                 </div>
-              </li>
+            </li>
           )),
       );
     },
