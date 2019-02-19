@@ -1,0 +1,54 @@
+body {
+  background-color: rgb(100, 65, 165);
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  text-decoration: underline;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#inputDiv {
+  text-align: center;
+}
+
+input {
+  border: 3px solid black;
+  height: 1.7em;
+  width: 15em;
+  outline: none;
+}
+
+#gameUl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right: 2.6em;
+  list-style-type: none;
+}
+
+.internalDiv {
+  height: 33.5em;
+}
+
+.streamLi {
+  text-align: center;
+  height: 34em;
+  width: 25em;
+  border: 0.2em solid white;
+  padding-top: 0.5em;
+  color: white;
+  margin: 0.3em;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+#altBoxArt {
+  color: rgb(100, 65, 165);
+  background-color: white;
+  height: 125px;
+  width: 125px;
+}
