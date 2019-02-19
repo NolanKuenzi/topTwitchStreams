@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import regeneratorRuntime from 'regenerator-runtime';
+import regeneratorRuntime, { async } from 'regenerator-runtime';
 import ClientId from '../clientId';
 
 const TwtichData = () => {
