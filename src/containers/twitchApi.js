@@ -12,15 +12,15 @@ const TwtichData = () => {
       /* Get the top streams */
       const getStreams = 'https://api.twitch.tv/helix/streams?first=50';
       const request = await fetch(getStreams, {
-        method: 'GET',
         headers: { 'Client-ID': ClientId },
+        method: 'GET',
       });
       const streamData = await request.json();
       const getGames = 'https://api.twitch.tv/helix/games/top?first=100';
       /* Get game names and box art urls */
       const request2 = await fetch(getGames, {
-        method: 'GET',
         headers: { 'Client-ID': ClientId },
+        method: 'GET',
       });
       const gameData = await request2.json();
       /* Add numbers, game names, and box art urls to the streamData.data array */
