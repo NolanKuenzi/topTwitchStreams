@@ -24,3 +24,4 @@ coverage
 # misc
 .DS_Store
 src/clientId.js
+src/containers/twitchApi.spec.js
