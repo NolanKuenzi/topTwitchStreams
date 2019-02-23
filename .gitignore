@@ -23,6 +23,4 @@ coverage
 
 # misc
 .DS_Store
-src/containers/twitchApi.spec.js
-src/containers/__mocks__
 src/clientId.js

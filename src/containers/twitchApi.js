@@ -7,7 +7,6 @@ import ClientId from '../clientId';
 const TwtichData = () => {
   const [apiData, setApiData] = useState('');
   const [originalData, setOriginalData] = useState('');
-  const [streamList, setStreamList] = useState(null);
   async function Api() {
     try {
       const getStreams = 'https://api.twitch.tv/helix/streams?first=50';
@@ -49,9 +48,6 @@ const TwtichData = () => {
     () => {
       if (apiData === '') {
         Api();
-        setStreamList(null);
-      } else {
-        setStreamList(apiData === null ? null : apiData);
       }
     },
     [apiData],
@@ -67,16 +63,16 @@ const TwtichData = () => {
         />
       </div>
       <div>
-        <ul id="gameUl">
-          {streamList === null
+        <ul id="gameUl" data-testid="streamListTest">
+          {apiData === null || apiData === ''
             ? null
-            : streamList.map(item => (
+            : apiData.map(item => (
               <li
                 key={item.user_name}
                 className="streamLi"
                 onClick={() => window.open(`https://www.twitch.tv/${item.user_name}`)}
               >
-                <div className="internalDiv" data-testid="streamListTest">
+                <div className="internalDiv">
                   {`${item.number}.`} {item.user_name} - Viewer Count:{' '}
                   {formatNumber(item.viewer_count)}
                   <br /> <br />
