@@ -49,38 +49,10 @@ const TwtichData = () => {
     () => {
       if (apiData === '') {
         Api();
-        return;
+        setStreamList(null);
+      } else {
+        setStreamList(apiData === null ? null : apiData);
       }
-      setStreamList(
-        apiData.length < 1
-          ? null
-          : apiData.map(item => (
-            <li
-              key={item.user_name}
-              className="streamLi"
-              onClick={() => window.open(`https://www.twitch.tv/${item.user_name}`)}
-            >
-              <div className="internalDiv">
-                  {`${item.number}.`} {item.user_name} - Viewer Count:{' '}
-                  {formatNumber(item.viewer_count)}
-                  <br /> <br />
-                  Currently Streaming: {item.gameName}
-                  <br />
-                <img
-                  src={item.imgUrl.replace('{width}x{height}', '125x125')}
-                  alt="Box Art is Unavailable"
-                />
-                <br /> <br />
-                  Screen Shot:
-                <br />
-                <img
-                  src={item.thumbnail_url.replace('{width}x{height}', '350x300')}
-                  alt="Screen Shot is Unavailable"
-                />
-              </div>
-            </li>
-          )),
-      );
     },
     [apiData],
   );
@@ -89,12 +61,42 @@ const TwtichData = () => {
       <div id="inputDiv">
         <input
           type="text"
-          placeholder="Search for a Stream"
+          placeholder="Search The Top 50"
           onChange={event => filterStreams(event)}
+          data-testid="testInput"
         />
       </div>
       <div>
-        <ul id="gameUl">{streamList}</ul>
+        <ul id="gameUl">
+          {streamList === null
+            ? null
+            : streamList.map(item => (
+              <li
+                key={item.user_name}
+                className="streamLi"
+                onClick={() => window.open(`https://www.twitch.tv/${item.user_name}`)}
+              >
+                <div className="internalDiv" data-testid="streamListTest">
+                  {`${item.number}.`} {item.user_name} - Viewer Count:{' '}
+                  {formatNumber(item.viewer_count)}
+                  <br /> <br />
+                    Currently Streaming: {item.gameName}
+                  <br />
+                  <img
+                    src={item.imgUrl.replace('{width}x{height}', '125x125')}
+                    alt="Box Art is Unavailable"
+                  />
+                  <br /> <br />
+                    Screen Shot:
+                  <br />
+                  <img
+                    src={item.thumbnail_url.replace('{width}x{height}', '350x300')}
+                    alt="Screen Shot is Unavailable"
+                  />
+                </div>
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
