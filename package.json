@@ -1,5 +1,5 @@
 {
-  "name": "topTwitchStreams",
+  "name": "top_twitch_streams",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
